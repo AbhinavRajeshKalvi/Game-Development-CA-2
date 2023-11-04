@@ -1,0 +1,54 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url(../Assets/oak_woods_v1.0/oak_woods_v1.0/background/Group\ 16.png);
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+#instructions{
+    color: #000;
+    font-family: Kaindra;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 80px; /* 200% */
+    letter-spacing: 8px;
+}
+
+#loading-animation{
+    display: flex;
+    justify-content: center;
+}
+#loading-ground{
+    display: flex;
+    justify-content: center;
+}
+
+#instruction-title{
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2%;
+}
+
+#rules-div{
+    display: flex;
+    justify-content: center;
+}
+
+.container{
+    margin-top: 18.8%;
+}
+
+#canvas1{
+    width: 500px;
+    height: 600px;
+    position: absolute;
+    top: -40%;
+    left: 45%;
+}
