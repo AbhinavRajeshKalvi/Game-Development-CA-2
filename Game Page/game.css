@@ -8,6 +8,7 @@ body{
     background-repeat: no-repeat;
     background-size: 100%;
     background-position-y: -80px;
+    overflow: hidden;
 }
 .id span{
     color: #000;
@@ -30,4 +31,9 @@ body{
     display: flex;
     justify-content: center;
 
+}
+
+#flex{
+    display: flex;
+    justify-content: center;
 }

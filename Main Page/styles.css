@@ -35,7 +35,7 @@ body{
 
 }
 
-/* .petal {
+.petal {
   width: 1rem;
   height: 1rem;
   display: inline-block;
@@ -137,4 +137,4 @@ body{
     transform: rotateX(359deg);
     display:block;
   }
-} */
+}
