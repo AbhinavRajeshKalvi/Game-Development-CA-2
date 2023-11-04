@@ -18,6 +18,5 @@ const imageContainer = document.getElementById("image-container");
             }
         }
 
-        // Set an interval to change the image every 3 seconds (3000 milliseconds)
         intervalId = setInterval(changeImage, 1000);
 

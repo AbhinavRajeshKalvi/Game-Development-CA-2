@@ -1,3 +1,3 @@
 setTimeout(() => {
-    window.location.href = './Main Page/index.html'; // Replace with the destination URL
+    window.location.href = './main.html'; 
 }, 3000);
