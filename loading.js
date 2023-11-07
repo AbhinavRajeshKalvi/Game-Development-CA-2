@@ -41,5 +41,5 @@ let textIndex = 0;
 
         setTimeout(() => {
             clearInterval(textChangeInterval); 
-            window.location.href = './game.html';
+            window.location.href = './game/game.html';
         }, 24500);
