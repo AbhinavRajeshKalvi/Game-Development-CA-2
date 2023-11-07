@@ -43,3 +43,5 @@ let textIndex = 0;
             clearInterval(textChangeInterval); 
             window.location.href = './game/game.html';
         }, 24500);
+
+        
