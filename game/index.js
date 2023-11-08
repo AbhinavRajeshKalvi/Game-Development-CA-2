@@ -1,6 +1,9 @@
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d')
 let score = 0;
+let highScore = parseInt(localStorage.getItem('highScore')) || 0;
+
+
 
 function incrementScore() {
   score += 1;
@@ -26,7 +29,7 @@ const background = new Sprite({
   const shop = new Sprite({
     position: {
       x: 1200,
-      y: 330
+      y: 327
     },
     imageSrc: './img/shop.png',
     scale: 2.75,
@@ -107,8 +110,15 @@ const keys = {
   },
   ArrowLeft: {
     pressed: false
-  }
+  },
+  w: {
+    pressed: false,
+  },
 }
+
+let isOnGround = true;
+
+
 
 class Obstacle extends Sprite {
   constructor({
@@ -143,12 +153,12 @@ function createObstacle() {
   const obstacle = new Obstacle({
     position: {
       x: canvas.width,
-      y: 585 // Adjust this to the desired Y position
+      y: 543 // Adjust this to the desired Y position
     },
     velocity: {
       x: -5 // Adjust the speed of the obstacle
     },
-    imageSrc: './img/rock.png', // Specify the image path for obstacles
+    imageSrc: './img/rock1.png', // Specify the image path for obstacles
     scale: 1, // Adjust the scale
     framesMax: 1 // Adjust the number of frames
   });
@@ -166,6 +176,18 @@ function isColliding(obj1, obj2) {
   );
 }
 
+function calculateScore() {
+  // Your score calculation logic here
+  return 0; // Replace 0 with the actual score value
+}
+
+function updateHighScore() {
+  if (score > highScore) {
+    highScore = score;
+    localStorage.setItem('highScore', highScore);
+  }
+}
+
 
 function animate() {
   window.requestAnimationFrame(animate)
@@ -179,6 +201,16 @@ function animate() {
   
   player.velocity.x = 0
 
+  if (!isOnGround) {
+    player.velocity.y += gravity;
+  }
+
+  if (player.position.y >= 330) {
+    player.position.y = 330; // Ensure the player is on the ground
+    isOnGround = true; // Reset isOnGround flag only when the character lands
+  }
+
+
   let collisionDetected = false;
 
   for (let i = obstacles.length - 1; i >= 0; i--) {
@@ -190,6 +222,12 @@ function animate() {
       player.switchSprite('death');
       player.dead = true;
       collisionDetected = true;
+      updateHighScore();
+      localStorage.setItem('score', score);
+      if (player.dead) {
+        
+        window.location.href = '../gameover.html';
+      }
       createObstacle = false
     }
 
@@ -200,13 +238,13 @@ function animate() {
   }
 
   // Create new obstacles at regular intervals
-  c.font = '24px Arial';
+  c.font = '35px Samurai Blast';
   c.fillStyle = 'black';
   c.fillText('Score: ' + score, 20, 40);
 
   if (!collisionDetected) {
     // Create new obstacles at regular intervals only if no collision occurred
-    if (Math.random() < 0.01) {
+    if (Math.random() < 0.009) {
       createObstacle();
     }
   } else {
@@ -233,7 +271,7 @@ function animate() {
   } else if (player.velocity.y > 0) {
     player.switchSprite('fall')
   }
-  
+
 }
 animate()
 window.addEventListener('keydown', (event) => {
@@ -248,8 +286,11 @@ window.addEventListener('keydown', (event) => {
           player.lastKey = 'a'
           break
         case 'w':
-          player.velocity.y = -23
-          break
+          if (isOnGround) {
+            player.velocity.y = -33;
+            isOnGround = false; // Set to false after jumping
+          }
+          break;
         case ' ':
           player.attack()
           break
@@ -266,4 +307,5 @@ window.addEventListener('keyup', (event) => {
         keys.a.pressed = false
         break
     }
-})  
+  })
+

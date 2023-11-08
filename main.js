@@ -1,7 +1,3 @@
-let backgroundSound = new Audio("./Assets/song.mp3")
-backgroundSound.play()
-backgroundSound.loop = true
-
 
 var petalPlayers = [];
 

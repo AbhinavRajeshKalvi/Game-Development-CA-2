@@ -28,7 +28,7 @@ function animate(){
 animate();
    
 let textIndex = 0;
-        const textArray = ["AVOID OBSTACLES BY TIMING YOUR JUMP CAREFULLY.", "IF YOU COME ACROSS AN ENEMY,  PRESS THE 'X' TO SWING YOUR KATANA.", "IF YOU AVOID THE ENEMY, YOU WILL LOSE.","YOU CAN FIND POWERUPS THAT WILL AID YOU ON YOUR JOURNEY", "REACH AS FAR AS YOU CAN", "HAVE FUN!"]; // Array of texts to display
+        const textArray = ["AVOID OBSTACLES BY TIMING YOUR JUMP CAREFULLY.", "USE THE 'W A S D' TO MOVE YOUR SAMURAI" , "PRESS THE 'SpaceBar' TO SWING YOUR KATANA.", "REMEMBER THAT THE BACK OF THE ROCKS ARE MORE DANGEROUS" , "REACH AS FAR AS YOU CAN", "HAVE FUN!"]; // Array of texts to display
         const spanElement = document.querySelector('#changingText');
 
         function changeText() {
@@ -42,6 +42,6 @@ let textIndex = 0;
         setTimeout(() => {
             clearInterval(textChangeInterval); 
             window.location.href = './game/game.html';
-        }, 24500);
+        }, 24000);
 
         
